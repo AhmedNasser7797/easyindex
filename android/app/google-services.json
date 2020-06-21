@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "916571441589",
+    "firebase_url": "https://easy-index-d79ca.firebaseio.com",
+    "project_id": "easy-index-d79ca",
+    "storage_bucket": "easy-index-d79ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916571441589:android:7ea247bffc20870cfa31fc",
+        "android_client_info": {
+          "package_name": "com.example.easyindex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916571441589-odtajjdaa5c7lkiu0snor68i45kop8d5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTz-G3EZvyyGjDmtHNBuXxVoOEqIijPaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916571441589-odtajjdaa5c7lkiu0snor68i45kop8d5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
