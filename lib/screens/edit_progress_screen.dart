@@ -8,6 +8,7 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/mfg_labs_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class EditProgressScreen extends StatefulWidget {
   static const routeName='edit-progress-screen';
@@ -136,7 +137,7 @@ class _EditProgressScreenState extends State<EditProgressScreen> {
               children: <Widget>[
                 Stack(
                   children: <Widget>[
-                    ProgressInfoItem(),
+                    ProgressInfoItem(icon:Icons.directions_run ,title: 'steps',),
                     InkWell(
                       child: Container(
                         width: 70,
@@ -160,7 +161,10 @@ class _EditProgressScreenState extends State<EditProgressScreen> {
                 ),
                 Stack(
                   children: <Widget>[
-                    ProgressInfoItem(),
+                    ProgressInfoItem(
+                      icon: Icons.show_chart,
+                      title: 'floors',
+                    ),
                     InkWell(
                       child: Container(
                         width: 70,
@@ -184,7 +188,10 @@ class _EditProgressScreenState extends State<EditProgressScreen> {
                 ),
                 Stack(
                   children: <Widget>[
-                    ProgressInfoItem(),
+                    ProgressInfoItem(
+                      icon:Icons.location_on,
+                      title:'Km' ,
+                    ),
                     InkWell(
                       child: Container(
                         width: 70,
@@ -208,7 +215,10 @@ class _EditProgressScreenState extends State<EditProgressScreen> {
                 ),
                 Stack(
                   children: <Widget>[
-                    ProgressInfoItem(),
+                    ProgressInfoItem(
+                      icon: MfgLabs.fire,
+                      title: 'Cals',
+                    ),
                     InkWell(
                       child: Container(
                         width: 70,
@@ -229,143 +239,221 @@ class _EditProgressScreenState extends State<EditProgressScreen> {
                       ),
                       onTap: null,
                     ),
-//                  Positioned(child: Icon(Icons.close,),right: 20,),
                   ],
                 ),
               ],
             ),
             SizedBox(height: 20),
 
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: (FaIcon(
-                    FontAwesome5.moon,
-                    color: Colors.deepPurple,
-                  )),
+            Stack(
+              children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: (FaIcon(
+                        FontAwesome5.moon,
+                        color: Colors.deepPurple,
+                      )),
+                    ),
+                    title: Text(
+                      'Wear Your Fitbit to bed',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    subtitle: Text(
+                      'Your Sleep Goals is 7 hr',
+                      style: TextStyle(color: Colors.black, fontSize: 13),
+                    ),
+
+                  ),
                 ),
-                title: Text(
-                  'Wear Your Fitbit to bed',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+
+                Positioned(
+                  right: 1,
+                  child: InkWell(
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      decoration: BoxDecoration(
+//                            border: Border.all(color: Colors.grey,width: 2),
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white),
+                      child: Row(
+                        children: <Widget>[
+                          IconButton(
+                          icon: Icon(
+                              Icons.fullscreen,
+                            color: Color(0xff03dac6),
+                            size: 25,
+                          ),
+
+
+                          ),
+                           SizedBox(width: 10,),
+
+                           Icon(
+                            Icons.close,
+                            color: Color(0xff03dac6),
+                            size: 25,
+                            textDirection: TextDirection.ltr,
+                          ),
+
+
+
+                        ],
+                      ),
+                    ),
+                    onTap: null,
+                  ),
                 ),
-                subtitle: Text(
-                  'Your Sleep Goals is 7 hr',
-                  style: TextStyle(color: Colors.black, fontSize: 13),
-                ),
-                trailing: IconButton(
-                  icon: Icon(Icons.add),
-                ),
-              ),
+              ],
             ),
 
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: (FaIcon(
-                    FontAwesome5.moon,
-                    color: Colors.deepPurple,
-                  )),
+            Stack(
+              children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: ListTile(
+                    leading:  CircularPercentIndicator(
+                    radius: 50.0,
+                    percent: 0.4,
+                    center: Icon(Icons.directions_run,color: Colors.orange,size: 30,),
+                    progressColor: Colors.orange,
+
+
+                  ),
+
+                      title: RichText(
+                        text: TextSpan(
+                            children:[
+                              TextSpan(
+                                text: '2 ',style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                  color: Colors.black
+                              ),
+                              ),
+                              TextSpan(
+                                text: 'of ',style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  color: Colors.black
+                              ),
+                              ),
+                              TextSpan(
+                                text: '5 ',style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                  color: Colors.black
+                              ),
+                              ),
+                              TextSpan(
+                                text: 'days',style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  color: Colors.black
+                              ),
+                              ),
+
+                            ]
+                        ),
+                      ),
+                      subtitle: Text(
+                        'of exercise this week',
+                        style: TextStyle(color: Colors.black, fontSize: 13),
+                      ),
+
+                  ),
                 ),
-                title: Text(
-                  'Wear Your Fitbit to bed',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+
+                Positioned(
+                  right: 1,
+                  child: InkWell(
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      decoration: BoxDecoration(
+//                            border: Border.all(color: Colors.grey,width: 2),
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white),
+                      child: Icon(
+                        Icons.close,
+                        color: Color(0xff03dac6),
+                        size: 25,
+                        textDirection: TextDirection.ltr,
+
+                      ),
+                    ),
+                    onTap: (){
+                      print('tab');
+                    },
+                  ),
                 ),
-                subtitle: Text(
-                  'Your Sleep Goals is 7 hr',
-                  style: TextStyle(color: Colors.black, fontSize: 13),
-                ),
-                trailing: IconButton(
-                  icon: Icon(Icons.add),
-                ),
-              ),
+              ],
             ),
 
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: (FaIcon(
-                    FontAwesome5.moon,
-                    color: Colors.deepPurple,
-                  )),
+            Stack(
+              children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: ListTile(
+                    leading:Icon(Icons.favorite,color: Colors.red,size: 24,),
+                    title:RichText(text: TextSpan(
+                        children: [
+                          TextSpan(
+                              text: '98',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20
+                              )
+                          ),
+                          TextSpan(
+                              text: ' bpm',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15
+                              )
+                          ),
+
+                        ]
+                    )),
+                    subtitle:Text(
+                      'fat burn zone',
+                      style: TextStyle(color: Colors.black, fontSize: 13),
+                    ),
+                  ),
                 ),
-                title: Text(
-                  'Wear Your Fitbit to bed',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+
+                Positioned(
+                  right: 1,
+                  child: InkWell(
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      decoration: BoxDecoration(
+//                            border: Border.all(color: Colors.grey,width: 2),
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white),
+                      child: Icon(
+                        Icons.close,
+                        color: Color(0xff03dac6),
+                        size: 25,
+                        textDirection: TextDirection.ltr,
+
+                      ),
+                    ),
+                    onTap: (){
+                      print('tab');
+                    },
+                  ),
                 ),
-                subtitle: Text(
-                  'Your Sleep Goals is 7 hr',
-                  style: TextStyle(color: Colors.black, fontSize: 13),
-                ),
-                trailing: IconButton(
-                  icon: Icon(Icons.add),
-                ),
-              ),
+              ],
             ),
 
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: (FaIcon(
-                    FontAwesome5.moon,
-                    color: Colors.deepPurple,
-                  )),
-                ),
-                title: Text(
-                  'Wear Your Fitbit to bed',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-                subtitle: Text(
-                  'Your Sleep Goals is 7 hr',
-                  style: TextStyle(color: Colors.black, fontSize: 13),
-                ),
-                trailing: IconButton(
-                  icon: Icon(Icons.add),
-                ),
-              ),
-            ),
 
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: (FaIcon(
-                    FontAwesome5.moon,
-                    color: Colors.deepPurple,
-                  )),
-                ),
-                title: Text(
-                  'Wear Your Fitbit to bed',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-                subtitle: Text(
-                  'Your Sleep Goals is 7 hr',
-                  style: TextStyle(color: Colors.black, fontSize: 13),
-                ),
-                trailing: IconButton(
-                  icon: Icon(Icons.add),
-                ),
-              ),
-            ),
 
-//            TextSpan(children: )
-//            Container(
-//                height: 300,
-//                width: double.infinity,
-//                child: PointsLineChart(),)
           ],
         ),
       ),

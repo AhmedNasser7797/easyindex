@@ -33,7 +33,7 @@ class TabScreen extends StatelessWidget {
               text: 'Today',
             ),
             Tab(
-              icon:  Icon(Icons.navigation,size: 20),
+              icon:  Icon(Icons.explore,size: 20),
               text: 'Discover',
             ),
             Tab(

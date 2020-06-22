@@ -3,6 +3,14 @@ import 'package:flutter_circular_slider/flutter_circular_slider.dart';
 import 'package:fluttericon/mfg_labs_icons.dart';
 
 class ProgressInfoItem extends StatelessWidget {
+ final IconData icon;
+  final String title;
+
+  ProgressInfoItem({
+    this.title,
+    this.icon
+});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +32,7 @@ class ProgressInfoItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(
-                MfgLabs.fire,
+                icon,
                 color: Color(0xff03dac6),
                 size: 30,
               ),
@@ -32,7 +40,7 @@ class ProgressInfoItem extends StatelessWidget {
           ),
         ),
 
-        Text('1.111',
+        Text(title,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 15
