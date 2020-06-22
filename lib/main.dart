@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: ProgressInfoScreen(),
+        home: AuthScreen(),
         routes: {
           EditProgressScreen.routeName:(ctx)=>EditProgressScreen(),
           HeartRatingScreen.routeName:(ctx)=>HeartRatingScreen(),
