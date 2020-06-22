@@ -1,7 +1,6 @@
-import 'package:easyindex/provider/auth.dart';
-import 'package:easyindex/provider/provider_data.dart';
-import 'package:easyindex/screens/auth_screen.dart';
-import 'package:easyindex/screens/progress_info_screen.dart';
+import './provider/auth.dart';
+import './screens/auth_screen.dart';
+import './screens/progress_info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +18,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: Auth()),
-        ChangeNotifierProvider.value(value: ProviderData()),
 
       ],
       child: MaterialApp(
@@ -32,7 +30,8 @@ class MyApp extends StatelessWidget {
           EditProgressScreen.routeName:(ctx)=>EditProgressScreen(),
           HeartRatingScreen.routeName:(ctx)=>HeartRatingScreen(),
           AuthScreen.routeName:(ctx)=>AuthScreen(),
-          ProgressInfoScreen.routeName:(ctx)=>ProgressInfoScreen()
+          ProgressInfoScreen.routeName:(ctx)=>ProgressInfoScreen(),
+          TabScreen.routeName:(ctx)=>TabScreen()
         },
       ),
     );

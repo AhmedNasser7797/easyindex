@@ -17,7 +17,7 @@ class EditProgressScreen extends StatefulWidget {
 }
 
 class _EditProgressScreenState extends State<EditProgressScreen> {
-  bool delete = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +28,7 @@ class _EditProgressScreenState extends State<EditProgressScreen> {
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.save), color: Colors.black, onPressed: () {
-            Firestore.instance.collection('userData').document('userId')
-                .setData({
-              'minutes': 15,
-              'floors': 7,
-              'km':0.98,
-              'cals':1125,
-              'sleepHouers':7,
-              'numDay':2,
-              'bpmHeart':98
-            });
+
           }),
           FlatButton.icon(
               onPressed: () {

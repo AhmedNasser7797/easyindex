@@ -8,6 +8,7 @@ import '../screens/premium_Screen.dart';
 import '../screens/progress_info_screen.dart';
 
 class TabScreen extends StatelessWidget {
+  static const routeName='tab-screen';
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

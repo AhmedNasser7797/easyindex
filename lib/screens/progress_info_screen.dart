@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easyindex/model/data.dart';
-import 'package:easyindex/provider/provider_data.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/edit_progress_screen.dart';

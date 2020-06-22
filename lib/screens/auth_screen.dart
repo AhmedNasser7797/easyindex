@@ -1,5 +1,6 @@
 import 'package:easyindex/provider/auth.dart';
 import 'package:easyindex/screens/progress_info_screen.dart';
+import 'package:easyindex/screens/tab_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -86,7 +87,7 @@ class _AuthScreenState extends State<AuthScreen> {
     setState(() {
       _isLoading = false;
     });
-    Navigator.of(context).pushNamed(ProgressInfoScreen.routeName);
+    Navigator.of(context).pushNamed(TabScreen.routeName);
   }
 
   void _switchAuthMode() {
