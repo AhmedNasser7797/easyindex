@@ -1,11 +1,11 @@
-
-
-import 'package:easyindex/screens/community_screen.dart';
-import 'package:easyindex/screens/covid19_screen.dart';
-import 'package:easyindex/screens/discover_screen.dart';
-import 'package:easyindex/screens/premium_Screen.dart';
-import 'package:easyindex/screens/progress_info_screen.dart';
 import 'package:flutter/material.dart';
+
+
+import '../screens/community_screen.dart';
+import '../screens/covid19_screen.dart';
+import '../screens/discover_screen.dart';
+import '../screens/premium_Screen.dart';
+import '../screens/progress_info_screen.dart';
 
 class TabScreen extends StatelessWidget {
   @override

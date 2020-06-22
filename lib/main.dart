@@ -1,10 +1,13 @@
-import 'file:///D:/Android/flutter/easyindex/lib/widgets/chart_screen.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:easyindex/screens/edit_progress_screen.dart';
-import 'package:easyindex/screens/heart_reting_screen.dart';
-
-import './screens/tab_screen.dart';
+import 'package:easyindex/provider/auth.dart';
+import 'package:easyindex/provider/provider_data.dart';
+import 'package:easyindex/screens/auth_screen.dart';
+import 'package:easyindex/screens/progress_info_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import './screens/edit_progress_screen.dart';
+import './screens/heart_reting_screen.dart';
+import './screens/tab_screen.dart';
 void main() {
   runApp(MyApp());
 }
@@ -13,17 +16,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Easy Index Task',
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: Auth()),
+        ChangeNotifierProvider.value(value: ProviderData()),
+
+      ],
+      child: MaterialApp(
+        title: 'Easy Index Task',
+        theme: ThemeData(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: ProgressInfoScreen(),
+        routes: {
+          EditProgressScreen.routeName:(ctx)=>EditProgressScreen(),
+          HeartRatingScreen.routeName:(ctx)=>HeartRatingScreen(),
+          AuthScreen.routeName:(ctx)=>AuthScreen(),
+          ProgressInfoScreen.routeName:(ctx)=>ProgressInfoScreen()
+        },
       ),
-      home: TabScreen(),
-      routes: {
-        EditProgressScreen.routeName:(ctx)=>EditProgressScreen(),
-        HeartRatingScreen.routeName:(ctx)=>HeartRatingScreen(),
-//        EndPointsAxisTimeSeriesChart.routeName:(ctx)=>EndPointsAxisTimeSeriesChart(_),
-      },
     );
   }
 }

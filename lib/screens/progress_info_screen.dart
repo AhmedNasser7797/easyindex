@@ -1,34 +1,65 @@
-import 'file:///D:/Android/flutter/easyindex/lib/widgets/chart_screen.dart';
-import 'package:easyindex/screens/edit_progress_screen.dart';
-import 'package:easyindex/screens/heart_reting_screen.dart';
-import 'package:easyindex/widgets/progress_info_item.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easyindex/model/data.dart';
+import 'package:easyindex/provider/provider_data.dart';
+import 'package:provider/provider.dart';
+
+import '../screens/edit_progress_screen.dart';
+import '../screens/heart_reting_screen.dart';
+import '../widgets/progress_info_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_slider/flutter_circular_slider.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/mfg_labs_icons.dart';
-import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ProgressInfoScreen extends StatefulWidget {
+  static const routeName = 'progress-screen';
+
   @override
   _ProgressInfoScreenState createState() => _ProgressInfoScreenState();
 }
 
 class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
-  bool delete=false;
+   int minutes=0;
+   int floors=0;
+   double km=0;
+   int cals=0;
+   int sleepHouers=0;
+   int numDay=0;
+   int bpmHeart=0;
+   int steps=0;
 
   @override
   Widget build(BuildContext context) {
+    final data= Firestore.instance.collection('userData').document('userId').get();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.save), color: Colors.black, onPressed: () {}),
-          FlatButton.icon(onPressed: (){
+
+          FlatButton.icon(
+           icon: Icon(Icons.save),
+              label: Text('retreive data'),
+            onPressed: () async{
+              final data=await Firestore.instance.collection('userData').document('userId').get();
+
+              setState(() {
+                minutes= data.data['minutes'];
+                bpmHeart= data.data['bpmHeart'];
+                cals= data.data['cals'];
+                floors= data.data['floors'];
+                km= data.data['km'];
+                numDay= data.data['numDay'];
+                sleepHouers= data.data['sleepHouers'];
+                steps=data.data['steps'];
+              });
+            },),
+
+         FlatButton.icon(onPressed: (){
           Navigator.of(context).pushNamed(HeartRatingScreen.routeName);
           }
           , icon: Icon(Icons.favorite),
@@ -48,6 +79,8 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                   icon: Icon(Icons.arrow_back_ios),
                   color: Colors.grey,
                   padding: EdgeInsets.only(right: 20),
+                  onPressed: (){
+                  },
                 ),
                 Text(
                   'Today',
@@ -59,7 +92,6 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                 InkWell(
                   onTap: (){
                    Navigator.of(context).pushNamed(EditProgressScreen.routeName);
-
                   },
                   child: Container(
                     padding: EdgeInsets.all(2),
@@ -113,7 +145,7 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                               size: 40,
                             ),
                             Text(
-                              '0',
+                              '$minutes',
                               style: TextStyle(
                                   fontSize: 30, fontWeight: FontWeight.bold),
                             ),
@@ -139,11 +171,12 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                 IconButton(
                   icon: Icon(
                     Icons.share,
-                    color: Colors.grey,
+                    color: Colors.grey
                   ),
                   alignment: AlignmentDirectional.topCenter,
                   padding: EdgeInsets.only(bottom: 110),
-                )
+                onPressed: (){},
+                ),
               ],
             ),
             Row(
@@ -152,7 +185,7 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                 Stack(
                   children: <Widget>[
                     ProgressInfoItem(
-                      icon: MfgLabs.fire,title: 'steps',
+                      icon: Icons.directions_run,title: 'steps',number: '$steps',
                     ),
                     InkWell(
                       child: Container(
@@ -169,6 +202,7 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                     ProgressInfoItem(
                       icon: Icons.show_chart,
                       title: 'floors',
+                      number: '$floors',
                     ),
                     InkWell(
                       child: Container(
@@ -185,6 +219,7 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                     ProgressInfoItem(
                       icon:Icons.location_on,
                       title:'Km' ,
+                      number: '$km',
                     ),
                     InkWell(
                       child: Container(
@@ -202,6 +237,7 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                     ProgressInfoItem(
                       icon: MfgLabs.fire,
                       title: 'Cals',
+                      number: '$cals',
                     ),
                     InkWell(
                       child: Container(
@@ -235,7 +271,7 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
                 subtitle: Text(
-                  'Your Sleep Goals is 7 hr',
+                  'Your Sleep Goals is $sleepHouers hr',
                   style: TextStyle(color: Colors.black, fontSize: 13),
                 ),
                 trailing: IconButton(
@@ -262,7 +298,7 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                   text: TextSpan(
                     children:[
                       TextSpan(
-                        text: '2 ',style: TextStyle(
+                        text: '$numDay ',style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
                         color: Colors.black
@@ -311,7 +347,7 @@ class _ProgressInfoScreenState extends State<ProgressInfoScreen> {
                 title:RichText(text: TextSpan(
                     children: [
                       TextSpan(
-                          text: '98',
+                          text: '$bpmHeart',
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,

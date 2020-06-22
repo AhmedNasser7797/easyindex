@@ -1,4 +1,4 @@
-import 'package:easyindex/widgets/chart_screen.dart';
+import '../widgets/chart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';

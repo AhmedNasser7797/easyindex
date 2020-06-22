@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_slider/flutter_circular_slider.dart';
-import 'package:fluttericon/mfg_labs_icons.dart';
 
 class ProgressInfoItem extends StatelessWidget {
  final IconData icon;
   final String title;
+  final String number;
 
   ProgressInfoItem({
     this.title,
-    this.icon
+    this.icon,
+    this.number
 });
 
   @override
@@ -40,14 +41,14 @@ class ProgressInfoItem extends StatelessWidget {
           ),
         ),
 
-        Text(title,
+        Text('$number',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 15
           ),
         ),
 
-        Text('steps',
+        Text(title,
 
         ),
       ],
